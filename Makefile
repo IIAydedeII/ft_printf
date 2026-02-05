@@ -1,11 +1,12 @@
-NAME		= libftprintf.a
+NAME		=	libftprintf.a
 
-LIBFT_DIR	= Libft
-LIBFT		= $(LIBFT_DIR)/libft.a
+LIBFT_DIR	=	Libft
+LIBFT		=	$(LIBFT_DIR)/libft.a
 
-SRC			= src/ft_printf.c
+SRC			=	src/ft_printf.c \
+				src/ft_print_char.c
 
-OBJ			= $(SRC:.c=.o)
+OBJ			=	$(SRC:.c=.o)
 
 all: $(NAME)
 

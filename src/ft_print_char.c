@@ -1,36 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_print_char.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adede <adede@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/05 12:50:06 by adede             #+#    #+#             */
-/*   Updated: 2026/02/05 14:34:01 by adede            ###   ########.fr       */
+/*   Created: 2026/02/05 12:33:09 by adede             #+#    #+#             */
+/*   Updated: 2026/02/05 14:34:03 by adede            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-int	ft_printf(const char *format, ...)
+int	ft_print_char(char c)
 {
-	va_list	arguments;
-	size_t	length;
-
-	length = 0;
-	va_start(arguments, format);
-	while (*format)
-	{
-		if (*format == '%')
-		{
-			format++;
-			if (*format == 'c')
-				length += ft_print_char(va_arg(arguments, int));
-		}
-		else
-			length += ft_print_char(*format);
-		format++;
-	}
-	va_end(arguments);
-	return (length);
+	ft_putchar_fd(c, 1);
+	return (1);
 }
