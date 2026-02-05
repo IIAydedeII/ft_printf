@@ -6,11 +6,23 @@
 /*   By: adede <adede@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 12:50:06 by adede             #+#    #+#             */
-/*   Updated: 2026/02/05 14:34:01 by adede            ###   ########.fr       */
+/*   Updated: 2026/02/05 17:09:58 by adede            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
+
+static int	ft_specifier(char specifier, va_list arguments)
+{
+	int	length;
+
+	length = 0;
+	if (specifier == 'c')
+		length = ft_print_char(va_arg(arguments, int));
+	else if (specifier == 's')
+		length = ft_print_str(va_arg(arguments, char *));
+	return (length);
+}
 
 int	ft_printf(const char *format, ...)
 {
@@ -24,8 +36,7 @@ int	ft_printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			if (*format == 'c')
-				length += ft_print_char(va_arg(arguments, int));
+			length += ft_specifier(*format, arguments);
 		}
 		else
 			length += ft_print_char(*format);

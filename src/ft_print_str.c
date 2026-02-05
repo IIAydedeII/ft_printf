@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_print_str.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adede <adede@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/06 13:34:11 by adede             #+#    #+#             */
-/*   Updated: 2026/02/05 17:02:33 by adede            ###   ########.fr       */
+/*   Created: 2026/02/05 12:42:29 by adede             #+#    #+#             */
+/*   Updated: 2026/02/05 17:01:07 by adede            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include "Libft/libft.h"
-# include <stdarg.h>
+#include "../ft_printf.h"
 
-int	ft_printf(const char *format, ...);
-int	ft_print_char(char c);
-int	ft_print_str(char *s);
-
-#endif
+int	ft_print_str(char *s)
+{
+	ft_putstr_fd(s, 1);
+	return (ft_strlen(s));
+}
