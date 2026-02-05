@@ -3,7 +3,7 @@ NAME		= libftprintf.a
 LIBFT_DIR	= Libft
 LIBFT		= $(LIBFT_DIR)/libft.a
 
-SRC			= test.c
+SRC			= src/ft_printf.c
 
 OBJ			= $(SRC:.c=.o)
 
