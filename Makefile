@@ -5,7 +5,8 @@ LIBFT		=	$(LIBFT_DIR)/libft.a
 
 SRC			=	src/ft_printf.c \
 				src/ft_print_char.c \
-				src/ft_print_str.c
+				src/ft_print_str.c \
+				src/ft_print_int.c \
 
 OBJ			=	$(SRC:.c=.o)
 

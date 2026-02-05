@@ -6,7 +6,7 @@
 /*   By: adede <adede@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 12:50:06 by adede             #+#    #+#             */
-/*   Updated: 2026/02/05 17:09:58 by adede            ###   ########.fr       */
+/*   Updated: 2026/02/05 17:27:53 by adede            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ static int	ft_specifier(char specifier, va_list arguments)
 		length = ft_print_char(va_arg(arguments, int));
 	else if (specifier == 's')
 		length = ft_print_str(va_arg(arguments, char *));
+	else if (specifier == 'd' || specifier == 'i')
+		length = ft_print_int(va_arg(arguments, int));
 	return (length);
 }
 

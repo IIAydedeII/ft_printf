@@ -1,23 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_print_int.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adede <adede@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/06 13:34:11 by adede             #+#    #+#             */
-/*   Updated: 2026/02/05 17:27:36 by adede            ###   ########.fr       */
+/*   Created: 2026/02/05 17:17:56 by adede             #+#    #+#             */
+/*   Updated: 2026/02/05 17:28:13 by adede            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include "Libft/libft.h"
-# include <stdarg.h>
+#include "../ft_printf.h"
 
-int	ft_printf(const char *format, ...);
-int	ft_print_char(char c);
-int	ft_print_str(char *s);
-int	ft_print_int(int i);
+int	ft_print_int(int i)
+{
+	long	number;
+	int		length;
 
-#endif
+	length = 0;
+	number = i;
+	ft_putnbr_fd(number, 1);
+	if (number == 0)
+		return (1);
+	if (number < 0)
+	{
+		length++;
+		number = -number;
+	}
+	while (number > 0)
+	{
+		length++;
+		number /= 10;
+	}
+	return (length);
+}
