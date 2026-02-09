@@ -6,7 +6,7 @@
 /*   By: adede <adede@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 13:34:11 by adede             #+#    #+#             */
-/*   Updated: 2026/02/05 18:43:07 by adede            ###   ########.fr       */
+/*   Updated: 2026/02/09 17:31:09 by adede            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@ int	ft_print_char(char c);
 int	ft_print_str(char *s);
 int	ft_print_int(int i);
 int	ft_print_uint(unsigned int i);
+int	ft_print_hex(unsigned int x, char specifier);
 
 #endif

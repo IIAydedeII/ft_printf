@@ -6,7 +6,7 @@
 /*   By: adede <adede@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 12:50:06 by adede             #+#    #+#             */
-/*   Updated: 2026/02/05 18:44:15 by adede            ###   ########.fr       */
+/*   Updated: 2026/02/09 17:21:13 by adede            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ static int	ft_specifier(char specifier, va_list arguments)
 		length = ft_print_int(va_arg(arguments, int));
 	else if (specifier == 'u')
 		length = ft_print_uint(va_arg(arguments, unsigned int));
+	else if (specifier == 'x' || specifier == 'X')
+		length = ft_print_hex(va_arg(arguments, unsigned int), specifier);
 	return (length);
 }
 
