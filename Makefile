@@ -9,6 +9,7 @@ SRC			=	src/ft_printf.c \
 				src/ft_print_int.c \
 				src/ft_print_uint.c \
 				src/ft_print_hex.c \
+				src/ft_print_ptr.c \
 
 OBJ			=	$(SRC:.c=.o)
 

@@ -12,7 +12,7 @@
 
 #include "../ft_printf.h"
 
-static int	ft_puthex(unsigned long number, char specifier)
+int	ft_puthex(uintptr_t number, char specifier)
 {
 	char	*hex_set;
 	int		count;
@@ -29,7 +29,7 @@ static int	ft_puthex(unsigned long number, char specifier)
 	return (count);
 }
 
-int	ft_print_hex(unsigned int x, char specifier)
+int	ft_print_hex(uintptr_t x, char specifier)
 {
 	return (ft_puthex(x, specifier));
 }
