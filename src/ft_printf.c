@@ -29,6 +29,8 @@ static int	ft_specifier(char specifier, va_list arguments)
 		length = ft_print_hex(va_arg(arguments, unsigned int), specifier);
 	else if (specifier == 'p')
 		length = ft_print_ptr((uintptr_t)va_arg(arguments, void *));
+	else if (specifier == '%')
+		length = ft_print_char('%');
 	return (length);
 }
 
