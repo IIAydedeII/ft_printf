@@ -6,7 +6,7 @@
 /*   By: adede <adede@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 12:50:06 by adede             #+#    #+#             */
-/*   Updated: 2026/02/10 14:59:09 by adede            ###   ########.fr       */
+/*   Updated: 2026/02/13 12:52:13 by adede            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	ft_printf(const char *format, ...)
 {
 	va_list	arguments;
 	int		length;
+	int		written;
 
 	length = 0;
 	va_start(arguments, format);
@@ -46,10 +47,18 @@ int	ft_printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			length += ft_specifier(*format, arguments);
+			written = ft_specifier(*format, arguments);
+			if (written == -1)
+				return (-1);
+			length += written;
 		}
 		else
-			length += ft_print_char(*format);
+		{
+			written = ft_print_char(*format);
+			if (written == -1)
+				return (-1);
+			length += written;
+		}
 		format++;
 	}
 	va_end(arguments);

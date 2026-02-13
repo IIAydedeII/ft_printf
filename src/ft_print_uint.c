@@ -6,36 +6,32 @@
 /*   By: adede <adede@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 17:17:56 by adede             #+#    #+#             */
-/*   Updated: 2026/02/05 19:10:51 by adede            ###   ########.fr       */
+/*   Updated: 2026/02/13 12:43:09 by adede            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-static int	ft_uintlen(unsigned int num)
+static int	ft_putunbr_fd(unsigned int number)
 {
 	int	length;
+	int	written;
 
 	length = 0;
-	if (num == 0)
-		return (1);
-	while (num > 0)
-	{
-		length++;
-		num /= 10;
-	}
-	return (length);
-}
-
-static void	ft_putunbr_fd(unsigned int number, int fd)
-{
 	if (number >= 10)
-		ft_putunbr_fd(number / 10, fd);
-	ft_putchar_fd((number % 10) + '0', fd);
+	{
+		written = ft_putunbr_fd(number / 10);
+		if (written == -1)
+			return (-1);
+		length += written;
+	}
+	written = ft_putchar((number % 10) + '0');
+	if (written == -1)
+		return (-1);
+	return (length + written);
 }
 
 int	ft_print_uint(unsigned int i)
 {
-	ft_putunbr_fd(i, 1);
-	return (ft_uintlen(i));
+	return (ft_putunbr_fd(i));
 }

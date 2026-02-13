@@ -6,7 +6,7 @@
 /*   By: adede <adede@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 19:23:46 by adede             #+#    #+#             */
-/*   Updated: 2026/02/10 14:59:04 by adede            ###   ########.fr       */
+/*   Updated: 2026/02/13 12:39:46 by adede            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	ft_puthex(uintptr_t number, char specifier)
 {
 	char	*hex_set;
 	int		count;
+	int		written;
 
 	count = 0;
 	if (specifier == 'x')
@@ -24,8 +25,10 @@ int	ft_puthex(uintptr_t number, char specifier)
 		hex_set = "0123456789ABCDEF";
 	if (number >= 16)
 		count += ft_puthex(number / 16, specifier);
-	ft_putchar_fd(hex_set[number % 16], 1);
-	count++;
+	written = ft_putchar(hex_set[number % 16]);
+	if (written == -1)
+		return (-1);
+	count += written;
 	return (count);
 }
 

@@ -6,36 +6,42 @@
 /*   By: adede <adede@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 17:17:56 by adede             #+#    #+#             */
-/*   Updated: 2026/02/05 19:11:02 by adede            ###   ########.fr       */
+/*   Updated: 2026/02/13 12:53:35 by adede            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-static int	ft_intlen(int i)
+static int	ft_putnbr(int n)
 {
-	long	number;
 	int		length;
+	int		written;
+	long	number;
 
-	number = i;
 	length = 0;
-	if (number == 0)
-		return (1);
+	number = n;
 	if (number < 0)
 	{
-		length++;
-		number = -number;
+		written = ft_putchar('-');
+		if (written == -1)
+			return (-1);
+		length += written;
+		number *= -1;
 	}
-	while (number > 0)
+	if (number >= 10)
 	{
-		length++;
-		number /= 10;
+		written = ft_putnbr(number / 10);
+		if (written == -1)
+			return (-1);
+		length += written;
 	}
-	return (length);
+	written = ft_putchar((number % 10) + '0');
+	if (written == -1)
+		return (-1);
+	return (length + written);
 }
 
 int	ft_print_int(int i)
 {
-	ft_putnbr_fd(i, 1);
-	return (ft_intlen(i));
+	return (ft_putnbr(i));
 }

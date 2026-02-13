@@ -6,7 +6,7 @@
 /*   By: adede <adede@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 19:23:46 by adede             #+#    #+#             */
-/*   Updated: 2026/02/10 14:58:48 by adede            ###   ########.fr       */
+/*   Updated: 2026/02/13 12:53:47 by adede            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,18 @@
 
 int	ft_print_ptr(uintptr_t p)
 {
+	int	length;
+	int	written;
+
+	length = 0;
 	if (!p)
 		return (ft_print_str("(nil)"));
-	return (ft_print_str("0x") + ft_print_hex(p, 'x'));
-}	
+	written = ft_print_str("0x");
+	if (written == -1)
+		return (-1);
+	length += written;
+	written = ft_print_hex(p, 'x');
+	if (written == -1)
+		return (-1);
+	return (length + written);
+}
