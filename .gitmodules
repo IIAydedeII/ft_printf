@@ -1,3 +1,4 @@
 [submodule "Libft"]
 	path = Libft
 	url = git@github.com:IIAydedeII/Libft.git
+	branch = master
