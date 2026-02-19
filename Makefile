@@ -3,13 +3,13 @@ NAME		=	libftprintf.a
 LIBFT_DIR	=	Libft
 LIBFT		=	$(LIBFT_DIR)/libft.a
 
-SRC			=	src/ft_printf.c \
-				src/ft_print_char.c \
-				src/ft_print_str.c \
-				src/ft_print_int.c \
-				src/ft_print_uint.c \
+SRC			=	src/ft_print_char.c \
 				src/ft_print_hex.c \
+				src/ft_print_int.c \
 				src/ft_print_ptr.c \
+				src/ft_print_str.c \
+				src/ft_print_uint.c \
+				src/ft_printf.c \
 
 OBJ			=	$(SRC:.c=.o)
 
