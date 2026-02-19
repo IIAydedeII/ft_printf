@@ -6,13 +6,13 @@
 /*   By: adede <adede@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 13:34:11 by adede             #+#    #+#             */
-/*   Updated: 2026/02/19 15:40:17 by adede            ###   ########.fr       */
+/*   Updated: 2026/02/19 19:35:31 by adede            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
-# include "Libft/libft.h"
+# include "../Libft/libft.h"
 # include <stdint.h> // to store pointer as an int (uintptr_t)
 
 int	ft_printf(const char *format, ...);

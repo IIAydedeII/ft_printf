@@ -6,11 +6,11 @@
 /*   By: adede <adede@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 12:50:06 by adede             #+#    #+#             */
-/*   Updated: 2026/02/19 15:40:45 by adede            ###   ########.fr       */
+/*   Updated: 2026/02/19 19:32:28 by adede            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "../includes/ft_printf.h"
 #include <stdarg.h>
 
 static int	ft_specifier(char specifier, va_list arguments)
