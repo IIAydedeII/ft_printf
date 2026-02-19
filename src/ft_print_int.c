@@ -6,11 +6,11 @@
 /*   By: adede <adede@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 17:17:56 by adede             #+#    #+#             */
-/*   Updated: 2026/02/19 19:32:28 by adede            ###   ########.fr       */
+/*   Updated: 2026/02/19 19:44:25 by adede            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
 
 static int	ft_putnbr(int n)
 {

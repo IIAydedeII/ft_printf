@@ -3,6 +3,8 @@ NAME		=	libftprintf.a
 LIBFT_DIR	=	Libft
 LIBFT		=	$(LIBFT_DIR)/libft.a
 
+INCLUDES	=	-I includes
+
 SRC			=	src/ft_print_char.c \
 				src/ft_print_hex.c \
 				src/ft_print_int.c \
@@ -23,7 +25,7 @@ $(LIBFT):
 	make -C $(LIBFT_DIR)
 
 %.o: %.c
-	cc -Wall -Werror -Wextra -c $< -o $@
+	cc -Wall -Werror -Wextra $(INCLUDES) -c $< -o $@
 
 clean:
 	rm -f $(OBJ)
