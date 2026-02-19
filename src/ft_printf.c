@@ -6,7 +6,7 @@
 /*   By: adede <adede@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 12:50:06 by adede             #+#    #+#             */
-/*   Updated: 2026/02/13 12:52:13 by adede            ###   ########.fr       */
+/*   Updated: 2026/02/19 15:16:09 by adede            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,17 +48,12 @@ int	ft_printf(const char *format, ...)
 		{
 			format++;
 			written = ft_specifier(*format, arguments);
-			if (written == -1)
-				return (-1);
-			length += written;
 		}
 		else
-		{
 			written = ft_print_char(*format);
-			if (written == -1)
-				return (-1);
-			length += written;
-		}
+		if (written == -1)
+			return (va_end(arguments), -1);
+		length += written;
 		format++;
 	}
 	va_end(arguments);
