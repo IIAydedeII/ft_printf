@@ -15,11 +15,19 @@ SRC			=	src/ft_print_char.c \
 
 OBJ			=	$(SRC:.c=.o)
 
+SRC_BONUS	=	src_bonus/ft_printf.c \
+
+OBJ_BONUS	=	$(SRC_BONUS:.c=.o)
+
 all: $(NAME)
 
 $(NAME): ${LIBFT} $(OBJ)
 	cp $(LIBFT) $(NAME)
 	ar rcs $(NAME) $(OBJ)
+
+bonus: ${LIBFT} $(OBJ_BONUS)
+	cp $(LIBFT) $(NAME)
+	ar rcs $(NAME) $(OBJ_BONUS)
 
 $(LIBFT):
 	make -C $(LIBFT_DIR)
@@ -28,7 +36,7 @@ $(LIBFT):
 	cc -Wall -Werror -Wextra $(INCLUDES) -c $< -o $@
 
 clean:
-	rm -f $(OBJ)
+	rm -f $(OBJ) $(OBJ_BONUS)
 	make -C $(LIBFT_DIR) clean
 
 fclean: clean
