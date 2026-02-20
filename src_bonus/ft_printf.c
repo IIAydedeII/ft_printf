@@ -6,7 +6,7 @@
 /*   By: adede <adede@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 12:50:06 by adede             #+#    #+#             */
-/*   Updated: 2026/02/20 04:45:42 by adede            ###   ########.fr       */
+/*   Updated: 2026/02/20 05:19:55 by adede            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,24 +38,28 @@ static int	ft_specifier(char specifier, va_list arguments)
 int	ft_printf(const char *format, ...)
 {
 	va_list		arguments;
+	t_flags		*flags;
 	int			length;
 	int			written;
 
 	length = 0;
+flags = ft_calloc(1,  sizeof(t_flags));
+	if (!flags)
+		return (-1);
 	va_start(arguments, format);
 	while (*format)
 	{
 		if (*format == '%')
 		{
-			format++;
+			format += ft_parse(format, flags);
 			written = ft_specifier(*format, arguments);
 		}
 		else
 			written = ft_print_char(*format);
 		if (written == -1)
-			return (va_end(arguments), -1);
+			return (va_end(arguments), free(flags), -1);
 		length += written;
 		format++;
 	};
-	return (va_end(arguments),length);
+	return (va_end(arguments), free(flags), length);
 }

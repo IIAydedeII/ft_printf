@@ -14,8 +14,22 @@
 # define FT_PRINTF_BONUS_H
 # include "../Libft/libft.h"
 # include <stdint.h> // to store pointer as an int (uintptr_t)
+# include <stdbool.h> // to store flags as a bool
+
+typedef struct s_flags
+{
+    bool	dash;
+    bool	zero;
+    bool	dot;
+    bool	hash;
+    bool	plus;
+    bool	space;
+}   t_flags;
 
 int	ft_printf(const char *format, ...);
+
+// Parse functions
+int	ft_parse(const char *format, t_flags *flags);
 
 // Print functions
 int	ft_print_char(char c);
