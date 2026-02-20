@@ -6,35 +6,42 @@
 /*   By: adede <adede@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 00:56:00 by adede             #+#    #+#             */
-/*   Updated: 2026/02/20 05:29:45 by adede            ###   ########.fr       */
+/*   Updated: 2026/02/20 05:44:41 by adede            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
-static void	ft_parse_flag(t_flags *flags, const char flag)
+static void	ft_parse_flag(t_options *options, const char flag)
 {
 	if (flag == '-')
-		flags->dash = true;
+		options->flags.dash = true;
     else if (flag == '0')
-		flags->zero = true;
+		options->flags.zero = true;
     else if (flag == '.')
-		flags->dot = true;
+		options->flags.dot = true;
     else if (flag == '#')
-		flags->hash = true;
+		options->flags.hash = true;
     else if (flag == '+')
-		flags->plus = true;
+		options->flags.plus = true;
     else if (flag == ' ')
-		flags->space = true;
+		options->flags.space = true;
 }
 
-int	ft_parse(const char *format, t_flags *flags)
+int	ft_parse(const char *format, t_options *options)
 {
-	const char *start;
+	const char	flags[] = "-0.#+ ";
+	const char	*start;
 
 	start = format;
 	format++;
-	while (ft_strchr("-0.#+ ", *format))
-    	ft_parse_flag(flags, *format++);
+	while (ft_strchr(flags, *format))
+    	ft_parse_flag(options, *format++);
+	if (ft_isdigit(*format))
+	{
+    	options->width = ft_atoi(format);
+        while (ft_isdigit(*format))
+            format++;
+	}
 	return (format - start);
 }
