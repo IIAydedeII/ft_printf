@@ -15,7 +15,14 @@ SRC			=	src/ft_print_char.c \
 
 OBJ			=	$(SRC:.c=.o)
 
-SRC_BONUS	=	src_bonus/ft_printf.c \
+SRC_BONUS	=	src_bonus/ft_parse.c \
+				src_bonus/ft_print_char.c \
+				src_bonus/ft_print_hex.c \
+				src_bonus/ft_print_int.c \
+				src_bonus/ft_print_ptr.c \
+				src_bonus/ft_print_str.c \
+				src_bonus/ft_print_uint.c \
+				src_bonus/ft_printf.c \
 
 OBJ_BONUS	=	$(SRC_BONUS:.c=.o)
 
