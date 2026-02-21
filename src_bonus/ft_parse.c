@@ -6,7 +6,7 @@
 /*   By: adede <adede@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 00:56:00 by adede             #+#    #+#             */
-/*   Updated: 2026/02/20 05:44:41 by adede            ###   ########.fr       */
+/*   Updated: 2026/02/21 03:02:10 by adede            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ static void	ft_parse_flag(t_options *options, const char flag)
 		options->flags.dash = true;
     else if (flag == '0')
 		options->flags.zero = true;
-    else if (flag == '.')
-		options->flags.dot = true;
     else if (flag == '#')
 		options->flags.hash = true;
     else if (flag == '+')
@@ -30,7 +28,7 @@ static void	ft_parse_flag(t_options *options, const char flag)
 
 int	ft_parse(const char *format, t_options *options)
 {
-	const char	flags[] = "-0.#+ ";
+	const char	flags[] = "-0#+ ";
 	const char	*start;
 
 	start = format;
@@ -40,6 +38,13 @@ int	ft_parse(const char *format, t_options *options)
 	if (ft_isdigit(*format))
 	{
     	options->width = ft_atoi(format);
+        while (ft_isdigit(*format))
+            format++;
+	}
+	if (*format == '.')
+	{
+		format++;
+		options->precision = ft_atoi(format);
         while (ft_isdigit(*format))
             format++;
 	}
