@@ -32,9 +32,12 @@ $(NAME): ${LIBFT} $(OBJ)
 	cp $(LIBFT) $(NAME)
 	ar rcs $(NAME) $(OBJ)
 
-bonus: ${LIBFT} $(OBJ_BONUS)
+bonus: .bonus
+
+.bonus: ${LIBFT} $(OBJ_BONUS)
 	cp $(LIBFT) $(NAME)
 	ar rcs $(NAME) $(OBJ_BONUS)
+	touch .bonus
 
 $(LIBFT):
 	make -C $(LIBFT_DIR)
@@ -44,6 +47,7 @@ $(LIBFT):
 
 clean:
 	rm -f $(OBJ) $(OBJ_BONUS)
+	rm -f .bonus
 	make -C $(LIBFT_DIR) clean
 
 fclean: clean
@@ -52,4 +56,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus
