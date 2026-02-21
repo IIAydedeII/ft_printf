@@ -6,7 +6,7 @@
 /*   By: adede <adede@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 00:56:00 by adede             #+#    #+#             */
-/*   Updated: 2026/02/21 03:02:10 by adede            ###   ########.fr       */
+/*   Updated: 2026/02/21 04:03:32 by adede            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,7 @@ int	ft_parse(const char *format, t_options *options)
         while (ft_isdigit(*format))
             format++;
 	}
+    options->specifier = *format;
+    format++;
 	return (format - start);
 }

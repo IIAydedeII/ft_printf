@@ -6,17 +6,19 @@
 /*   By: adede <adede@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 12:50:06 by adede             #+#    #+#             */
-/*   Updated: 2026/02/20 05:32:06 by adede            ###   ########.fr       */
+/*   Updated: 2026/02/21 04:14:58 by adede            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 #include <stdarg.h>
 
-static int	ft_specifier(char specifier, va_list arguments)
+static int	ft_specifier(t_options *options, va_list arguments)
 {
-	int	length;
+	char	specifier;
+	int		length;
 
+	specifier = options->specifier;
 	length = 0;
 	if (specifier == 'c')
 		length = ft_print_char(va_arg(arguments, int));
@@ -52,14 +54,13 @@ int	ft_printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format += ft_parse(format, options);
-			written = ft_specifier(*format, arguments);
+			written = ft_specifier(options, arguments);
 		}
 		else
-			written = ft_print_char(*format);
+			written = ft_print_char(*format++);
 		if (written == -1)
 			return (va_end(arguments), free(options), -1);
 		length += written;
-		format++;
 	};
 	return (va_end(arguments), free(options), length);
 }

@@ -6,7 +6,7 @@
 /*   By: adede <adede@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 13:34:11 by adede             #+#    #+#             */
-/*   Updated: 2026/02/21 03:03:41 by adede            ###   ########.fr       */
+/*   Updated: 2026/02/21 03:51:20 by adede            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_options
 	t_flags	flags;
     int		width;
     int		precision;
+	char	specifier;
 }   t_options;
 
 int	ft_printf(const char *format, ...);
