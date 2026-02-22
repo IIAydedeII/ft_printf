@@ -6,42 +6,30 @@
 /*   By: adede <adede@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 17:17:56 by adede             #+#    #+#             */
-/*   Updated: 2026/02/19 19:44:25 by adede            ###   ########.fr       */
+/*   Updated: 2026/02/22 18:17:05 by adede            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_printf_bonus.h"
 
-static int	ft_putnbr(int n)
+static int	ft_putnbr(int n, t_options *options)
 {
 	int		length;
-	int		written;
 	long	number;
 
 	length = 0;
 	number = n;
 	if (number < 0)
 	{
-		written = ft_putchar('-');
-		if (written == -1)
-			return (-1);
-		length += written;
+		length += ft_print_char('-', options);
 		number *= -1;
 	}
 	if (number >= 10)
-	{
-		written = ft_putnbr(number / 10);
-		if (written == -1)
-			return (-1);
-		length += written;
-	}
-	written = ft_putchar((number % 10) + '0');
-	if (written == -1)
-		return (-1);
-	return (length + written);
+		length += ft_putnbr(number / 10, options);
+	return (length + ft_print_char((number % 10) + '0', options));
 }
 
-int	ft_print_int(int i)
+int	ft_print_int(int i, t_options *options)
 {
-	return (ft_putnbr(i));
+	return (ft_putnbr(i, options));
 }

@@ -6,22 +6,25 @@
 /*   By: adede <adede@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 12:42:29 by adede             #+#    #+#             */
-/*   Updated: 2026/02/19 19:44:25 by adede            ###   ########.fr       */
+/*   Updated: 2026/02/22 18:05:58 by adede            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_printf_bonus.h"
 
-int	ft_putstr(char *s)
+static int	ft_putstr(char *s, t_options *options)
 {
-	if (!s)
-		return (-1);
-	return ((int)write(1, s, ft_strlen(s)));
+	int	written;
+
+	written = (int)write(1, s, ft_strlen(s));
+	if (written < 0)
+		options->error = true;
+	return (written);
 }
 
-int	ft_print_str(char *s)
+int	ft_print_str(char *s, t_options *options)
 {
 	if (!s)
-		return (ft_putstr("(null)"));
-	return (ft_putstr(s));
+		return (ft_putstr("(null)", options));
+	return (ft_putstr(s, options));
 }

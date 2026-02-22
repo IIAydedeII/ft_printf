@@ -6,7 +6,7 @@
 /*   By: adede <adede@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 13:34:11 by adede             #+#    #+#             */
-/*   Updated: 2026/02/21 03:51:20 by adede            ###   ########.fr       */
+/*   Updated: 2026/02/22 18:29:07 by adede            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct s_options
     int		width;
     int		precision;
 	char	specifier;
+	bool	error;
 }   t_options;
 
 int	ft_printf(const char *format, ...);
@@ -40,15 +41,11 @@ int	ft_printf(const char *format, ...);
 int	ft_parse(const char *format, t_options *options);
 
 // Print functions
-int	ft_print_char(char c);
-int	ft_print_str(char *s);
-int	ft_print_int(int i);
-int	ft_print_uint(unsigned int i);
-int	ft_print_hex(uintptr_t x, char specifier);
-int	ft_print_ptr(uintptr_t p);
-
-// Libft stand-in's
-int	ft_putchar(char c);
-int	ft_putstr(char *s);
+int	ft_print_char(char c, t_options *options);
+int	ft_print_str(char *s, t_options *options);
+int	ft_print_int(int i, t_options *options);
+int	ft_print_uint(unsigned int i, t_options *options);
+int	ft_print_hex(uintptr_t x, t_options *options);
+int	ft_print_ptr(uintptr_t p, t_options *options);
 
 #endif

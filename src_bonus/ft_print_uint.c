@@ -6,32 +6,23 @@
 /*   By: adede <adede@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 17:17:56 by adede             #+#    #+#             */
-/*   Updated: 2026/02/19 19:44:25 by adede            ###   ########.fr       */
+/*   Updated: 2026/02/22 18:16:49 by adede            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_printf_bonus.h"
 
-static int	ft_putunbr_fd(unsigned int number)
+static int	ft_putunbr_fd(unsigned int number, t_options *options)
 {
 	int	length;
-	int	written;
 
 	length = 0;
 	if (number >= 10)
-	{
-		written = ft_putunbr_fd(number / 10);
-		if (written == -1)
-			return (-1);
-		length += written;
-	}
-	written = ft_putchar((number % 10) + '0');
-	if (written == -1)
-		return (-1);
-	return (length + written);
+		length += ft_putunbr_fd(number / 10, options);
+	return (length + ft_print_char((number % 10) + '0', options));
 }
 
-int	ft_print_uint(unsigned int i)
+int	ft_print_uint(unsigned int i, t_options *options)
 {
-	return (ft_putunbr_fd(i));
+	return (ft_putunbr_fd(i, options));
 }
