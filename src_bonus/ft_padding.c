@@ -1,44 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_str.c                                     :+:      :+:    :+:   */
+/*   ft_padding.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adede <adede@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 12:42:29 by adede             #+#    #+#             */
-/*   Updated: 2026/02/23 00:44:24 by adede            ###   ########.fr       */
+/*   Updated: 2026/02/23 00:55:52 by adede            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
-int	ft_putstr(char *s, t_options *options)
+void	ft_padding(int padding, t_options *options)
 {
-	int	written;
-
-	written = (int)write(1, s, ft_strlen(s));
-	if (written < 0)
-		options->error = true;
-	return (written);
-}
-
-int	ft_print_str(char *s, t_options *options)
-{
-	int	length;
-	int	padding;
-
-	if (!s)
-		return (ft_putstr("(null)", options));
-	length = ft_strlen(s);
-	padding = options->width - length;
-	if (padding < 0)
-		padding = 0;
-	if (!options->flags.dash)
-		ft_padding(padding, options);
-	ft_putstr(s, options);
-	if (options->flags.dash)
-		ft_padding(padding, options);
-	if (options->width > length)
-		return (options->width);
-	return (length);
+	while (padding--)
+	{
+		if (options->flags.zero && ft_strchr("diuoxX", options->specifier))
+			ft_putchar('0', options);
+		else
+			ft_putchar(' ', options);
+	}
 }

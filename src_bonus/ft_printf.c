@@ -33,7 +33,7 @@ static int	ft_specifier(t_options *options, va_list arguments)
 	else if (specifier == 'p')
 		length = ft_print_ptr((uintptr_t)va_arg(arguments, void *), options);
 	else if (specifier == '%')
-		length = ft_print_char('%', options);
+		length = ft_putchar('%', options);
 	return (length);
 }
 
@@ -56,7 +56,7 @@ int	ft_printf(const char *format, ...)
 			length += ft_specifier(options, arguments);
 		}
 		else
-			length += ft_print_char(*format++, options);
+			length += ft_putchar(*format++, options);
 	};
 	if (options->error)
 		length = -1;

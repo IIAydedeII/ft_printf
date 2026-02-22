@@ -6,11 +6,24 @@
 /*   By: adede <adede@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 19:23:46 by adede             #+#    #+#             */
-/*   Updated: 2026/02/22 18:21:22 by adede            ###   ########.fr       */
+/*   Updated: 2026/02/23 00:52:33 by adede            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
+
+static size_t ft_uintptr_len(uintptr_t n)
+{
+    size_t length;
+	
+	length = 1;
+    while (n >= 16)
+    {
+        n /= 16;
+        length++;
+    }
+    return length;
+}
 
 int	ft_puthex(uintptr_t number, t_options *options)
 {
@@ -24,11 +37,25 @@ int	ft_puthex(uintptr_t number, t_options *options)
 		hex_set = "0123456789ABCDEF";
 	if (number >= 16)
 		count += ft_puthex(number / 16, options);
-	count += ft_print_char(hex_set[number % 16], options);
+	count += ft_putchar(hex_set[number % 16], options);
 	return (count);
 }
 
 int	ft_print_hex(uintptr_t x, t_options *options)
 {
-	return (ft_puthex(x, options));
+	int	length;
+	int	padding;
+
+	length = ft_uintptr_len(x);
+	padding = options->width - length;
+	if (padding < 0)
+		padding = 0;
+	if (!options->flags.dash)
+		ft_padding(padding, options);
+	ft_puthex(x, options);
+	if (options->flags.dash)
+		ft_padding(padding, options);
+	if (options->width > length)
+		return (options->width);
+	return (length);
 }

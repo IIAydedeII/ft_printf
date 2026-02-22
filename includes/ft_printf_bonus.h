@@ -6,7 +6,7 @@
 /*   By: adede <adede@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 13:34:11 by adede             #+#    #+#             */
-/*   Updated: 2026/02/22 18:29:07 by adede            ###   ########.fr       */
+/*   Updated: 2026/02/23 01:04:46 by adede            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,13 @@ int	ft_print_int(int i, t_options *options);
 int	ft_print_uint(unsigned int i, t_options *options);
 int	ft_print_hex(uintptr_t x, t_options *options);
 int	ft_print_ptr(uintptr_t p, t_options *options);
+
+// Print utilities
+void	ft_padding(int padding, t_options *options);
+
+// Libft stand-in's
+int	ft_putchar(char c, t_options *options);
+int	ft_putstr(char *s, t_options *options);
+int	ft_puthex(uintptr_t number, t_options *options);
 
 #endif

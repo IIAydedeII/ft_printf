@@ -6,16 +6,44 @@
 /*   By: adede <adede@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 19:23:46 by adede             #+#    #+#             */
-/*   Updated: 2026/02/22 18:23:03 by adede            ###   ########.fr       */
+/*   Updated: 2026/02/23 01:09:05 by adede            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
+static size_t ft_uintptr_len(uintptr_t n)
+{
+    size_t length;
+	
+	length = 1;
+    while (n >= 16)
+    {
+        n /= 16;
+        length++;
+    }
+    return length;
+}
+
 int	ft_print_ptr(uintptr_t p, t_options *options)
 {
 	if (!p)
-		return (ft_print_str("(nil)", options));
+		return (ft_putstr("(nil)", options));
 	options->specifier = 'x';
-	return (ft_print_str("0x", options) + ft_print_hex(p, options));
+	int	length;
+	int	padding;
+
+	length = ft_uintptr_len(p) + 2;
+	padding = options->width - length;
+	if (padding < 0)
+		padding = 0;
+	if (!options->flags.dash)
+		ft_padding(padding, options);
+	ft_putstr("0x", options);
+	ft_puthex(p, options);
+	if (options->flags.dash)
+		ft_padding(padding, options);
+	if (options->width > length)
+		return (options->width);
+	return (length);
 }
