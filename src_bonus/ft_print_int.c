@@ -6,7 +6,7 @@
 /*   By: adede <adede@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 17:17:56 by adede             #+#    #+#             */
-/*   Updated: 2026/02/23 09:49:56 by adede            ###   ########.fr       */
+/*   Updated: 2026/02/23 22:55:46 by adede            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,16 @@ int	ft_print_int(int i, t_options *options)
 {
 	int		length;
 	int		padding;
+	bool	hidden_zero;
 
 	padding = 0;
 	length = ft_int_len(i);
+	hidden_zero = (options->flags.dot && i == 0);
+	length -= hidden_zero;
 	if (!options->flags.dash)
 		padding = ft_padding(length, options);
-	ft_putnbr(i, options);
+	if (!hidden_zero)
+		ft_putnbr(i, options);
 	if (options->flags.dash)
 		padding = ft_padding(length, options);
 	return (length + padding);

@@ -6,7 +6,7 @@
 /*   By: adede <adede@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 00:56:00 by adede             #+#    #+#             */
-/*   Updated: 2026/02/23 09:15:36 by adede            ###   ########.fr       */
+/*   Updated: 2026/02/23 22:55:42 by adede            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int	ft_parse(const char *format, t_options *options)
 	if (*format == '.')
 	{
 		format++;
+		options->flags.dot = true;
 		options->precision = ft_atoi(format);
 		while (ft_isdigit(*format))
 			format++;

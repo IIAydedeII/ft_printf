@@ -6,7 +6,7 @@
 /*   By: adede <adede@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 19:23:46 by adede             #+#    #+#             */
-/*   Updated: 2026/02/23 09:49:50 by adede            ###   ########.fr       */
+/*   Updated: 2026/02/23 22:55:44 by adede            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,16 @@ int	ft_print_hex(uintptr_t x, t_options *options)
 {
 	int		length;
 	int		padding;
+	bool	hidden_zero;
 
 	padding = 0;
 	length = ft_uintptr_len(x);
+	hidden_zero = (options->flags.dot && x == 0);
+	length -= hidden_zero;
 	if (!options->flags.dash)
 		padding = ft_padding(length, options);
-	ft_puthex(x, options);
+	if (!hidden_zero)
+		ft_puthex(x, options);
 	if (options->flags.dash)
 		padding = ft_padding(length, options);
 	return (length + padding);

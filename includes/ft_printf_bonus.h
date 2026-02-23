@@ -6,7 +6,7 @@
 /*   By: adede <adede@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 13:34:11 by adede             #+#    #+#             */
-/*   Updated: 2026/02/23 09:14:05 by adede            ###   ########.fr       */
+/*   Updated: 2026/02/23 22:55:39 by adede            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ typedef struct s_flags
 {
 	bool	dash;
 	bool	zero;
+	bool	dot;
 	bool	hash;
 	bool	plus;
 	bool	space;
