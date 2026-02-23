@@ -49,15 +49,15 @@ static int	ft_putnbr(int n, t_options *options)
 
 int	ft_print_int(int i, t_options *options)
 {
-	int	length;
+	int		length;
+	int		padding;
 
+	padding = 0;
 	length = ft_int_len(i);
 	if (!options->flags.dash)
-		ft_padding(length, options);
+		padding = ft_padding(length, options);
 	ft_putnbr(i, options);
 	if (options->flags.dash)
-		ft_padding(length, options);
-	if (options->width > length)
-		return (options->width);
-	return (length);
+		padding = ft_padding(length, options);
+	return (length + padding);
 }

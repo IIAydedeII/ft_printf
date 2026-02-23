@@ -6,18 +6,20 @@
 /*   By: adede <adede@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 12:42:29 by adede             #+#    #+#             */
-/*   Updated: 2026/02/23 10:35:07 by adede            ###   ########.fr       */
+/*   Updated: 2026/02/23 22:29:08 by adede            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
-void	ft_padding(int length, t_options *options)
+int	ft_padding(int length, t_options *options)
 {
 	int		padding_zero;
 	int		padding;
 	bool	numeric;
+	int		written;
 
+	written = 0;
 	padding_zero = options->precision - length;
 	if (padding_zero < 0)
 		padding_zero = 0;
@@ -31,7 +33,9 @@ void	ft_padding(int length, t_options *options)
 			ft_putchar('0', options);
 		else
 			ft_putchar(' ', options);
+		written++;
 	}
 	while (padding_zero-- && numeric)
-		ft_putchar('0', options);
+		written += ft_putchar('0', options);
+	return(written);
 }

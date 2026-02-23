@@ -43,15 +43,15 @@ int	ft_puthex(uintptr_t number, t_options *options)
 
 int	ft_print_hex(uintptr_t x, t_options *options)
 {
-	int	length;
+	int		length;
+	int		padding;
 
+	padding = 0;
 	length = ft_uintptr_len(x);
 	if (!options->flags.dash)
-		ft_padding(length, options);
+		padding = ft_padding(length, options);
 	ft_puthex(x, options);
 	if (options->flags.dash)
-		ft_padding(length, options);
-	if (options->width > length)
-		return (options->width);
-	return (length);
+		padding = ft_padding(length, options);
+	return (length + padding);
 }

@@ -35,25 +35,25 @@ typedef struct s_options
 	bool	error;
 }	t_options;
 
-int		ft_printf(const char *format, ...);
+int	ft_printf(const char *format, ...);
 
 // Parse functions
-int		ft_parse(const char *format, t_options *options);
+int	ft_parse(const char *format, t_options *options);
 
 // Print functions
-int		ft_print_char(char c, t_options *options);
-int		ft_print_str(char *s, t_options *options);
-int		ft_print_int(int i, t_options *options);
-int		ft_print_uint(unsigned int i, t_options *options);
-int		ft_print_hex(uintptr_t x, t_options *options);
-int		ft_print_ptr(uintptr_t p, t_options *options);
+int	ft_print_char(char c, t_options *options);
+int	ft_print_str(char *s, t_options *options);
+int	ft_print_int(int i, t_options *options);
+int	ft_print_uint(unsigned int i, t_options *options);
+int	ft_print_hex(uintptr_t x, t_options *options);
+int	ft_print_ptr(uintptr_t p, t_options *options);
 
 // Print utilities
-void	ft_padding(int padding, t_options *options);
+int	ft_padding(int padding, t_options *options);
 
 // Libft stand-in's
-int		ft_putchar(char c, t_options *options);
-int		ft_putstr(char *s, t_options *options);
-int		ft_puthex(uintptr_t number, t_options *options);
+int	ft_putchar(char c, t_options *options);
+int	ft_putstr(char *s, t_options *options);
+int	ft_puthex(uintptr_t number, t_options *options);
 
 #endif

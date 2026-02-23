@@ -37,15 +37,15 @@ static int	ft_putunbr_fd(unsigned int number, t_options *options)
 
 int	ft_print_uint(unsigned int i, t_options *options)
 {
-	int	length;
+	int		length;
+	int		padding;
 
+	padding = 0;
 	length = ft_uint_len(i);
 	if (!options->flags.dash)
-		ft_padding(length, options);
+		padding = ft_padding(length, options);
 	ft_putunbr_fd(i, options);
 	if (options->flags.dash)
-		ft_padding(length, options);
-	if (options->width > length)
-		return (options->width);
-	return (length);
+		padding = ft_padding(length, options);
+	return (length + padding);
 }
