@@ -6,7 +6,7 @@
 /*   By: adede <adede@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 17:17:56 by adede             #+#    #+#             */
-/*   Updated: 2026/02/23 09:31:22 by adede            ###   ########.fr       */
+/*   Updated: 2026/02/23 09:49:56 by adede            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,13 @@ static int	ft_putnbr(int n, t_options *options)
 int	ft_print_int(int i, t_options *options)
 {
 	int	length;
-	int	padding;
 
 	length = ft_int_len(i);
-	padding = options->width - length;
-	if (padding < 0)
-		padding = 0;
 	if (!options->flags.dash)
-		ft_padding(padding, options);
+		ft_padding(length, options);
 	ft_putnbr(i, options);
 	if (options->flags.dash)
-		ft_padding(padding, options);
+		ft_padding(length, options);
 	if (options->width > length)
 		return (options->width);
 	return (length);

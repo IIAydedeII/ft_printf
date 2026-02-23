@@ -6,7 +6,7 @@
 /*   By: adede <adede@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 19:23:46 by adede             #+#    #+#             */
-/*   Updated: 2026/02/23 09:16:37 by adede            ###   ########.fr       */
+/*   Updated: 2026/02/23 09:49:50 by adede            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,17 +44,13 @@ int	ft_puthex(uintptr_t number, t_options *options)
 int	ft_print_hex(uintptr_t x, t_options *options)
 {
 	int	length;
-	int	padding;
 
 	length = ft_uintptr_len(x);
-	padding = options->width - length;
-	if (padding < 0)
-		padding = 0;
 	if (!options->flags.dash)
-		ft_padding(padding, options);
+		ft_padding(length, options);
 	ft_puthex(x, options);
 	if (options->flags.dash)
-		ft_padding(padding, options);
+		ft_padding(length, options);
 	if (options->width > length)
 		return (options->width);
 	return (length);
