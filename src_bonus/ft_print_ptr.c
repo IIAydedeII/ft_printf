@@ -6,7 +6,7 @@
 /*   By: adede <adede@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 19:23:46 by adede             #+#    #+#             */
-/*   Updated: 2026/02/23 09:50:44 by adede            ###   ########.fr       */
+/*   Updated: 2026/02/23 22:46:20 by adede            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,18 @@ static size_t	ft_uintptr_len(uintptr_t n)
 int	ft_print_ptr(uintptr_t p, t_options *options)
 {
 	int	length;
+	int	padding;
 
 	if (!p)
 		return (ft_putstr("(nil)", options));
 	options->specifier = 'x';
+	padding = 0;
 	length = ft_uintptr_len(p) + 2;
 	if (!options->flags.dash)
-		ft_padding(length, options);
+		padding = ft_padding(length, options);
 	ft_putstr("0x", options);
 	ft_puthex(p, options);
 	if (options->flags.dash)
-		ft_padding(length, options);
-	if (options->width > length)
-		return (options->width);
-	return (length);
+		padding = ft_padding(length, options);
+	return (length + padding);
 }

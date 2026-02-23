@@ -6,7 +6,7 @@
 /*   By: adede <adede@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 12:33:09 by adede             #+#    #+#             */
-/*   Updated: 2026/02/23 09:50:26 by adede            ###   ########.fr       */
+/*   Updated: 2026/02/23 22:49:56 by adede            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ int	ft_putchar(char c, t_options *options)
 int	ft_print_char(char c, t_options *options)
 {
 	int	length;
+	int	padding;
 
 	length = 1;
+	padding = 0;
 	if (!options->flags.dash)
-		ft_padding(length, options);
+		padding = ft_padding(length, options);
 	ft_putchar(c, options);
 	if (options->flags.dash)
-		ft_padding(length, options);
-	if (options->width > length)
-		return (options->width);
-	return (length);
+		padding = ft_padding(length, options);
+	return (length + padding);
 }
