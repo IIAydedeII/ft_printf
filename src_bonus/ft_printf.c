@@ -6,7 +6,7 @@
 /*   By: adede <adede@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 12:50:06 by adede             #+#    #+#             */
-/*   Updated: 2026/02/22 18:27:43 by adede            ###   ########.fr       */
+/*   Updated: 2026/02/23 09:18:39 by adede            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	ft_printf(const char *format, ...)
 		}
 		else
 			length += ft_putchar(*format++, options);
-	};
+	}
 	if (options->error)
 		length = -1;
 	return (va_end(arguments), free(options), length);

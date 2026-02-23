@@ -6,23 +6,23 @@
 /*   By: adede <adede@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 19:23:46 by adede             #+#    #+#             */
-/*   Updated: 2026/02/23 00:52:33 by adede            ###   ########.fr       */
+/*   Updated: 2026/02/23 09:16:37 by adede            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
-static size_t ft_uintptr_len(uintptr_t n)
+static size_t	ft_uintptr_len(uintptr_t n)
 {
-    size_t length;
-	
+	size_t	length;
+
 	length = 1;
-    while (n >= 16)
-    {
-        n /= 16;
-        length++;
-    }
-    return length;
+	while (n >= 16)
+	{
+		n /= 16;
+		length++;
+	}
+	return (length);
 }
 
 int	ft_puthex(uintptr_t number, t_options *options)

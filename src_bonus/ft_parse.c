@@ -6,7 +6,7 @@
 /*   By: adede <adede@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 00:56:00 by adede             #+#    #+#             */
-/*   Updated: 2026/02/21 04:03:32 by adede            ###   ########.fr       */
+/*   Updated: 2026/02/23 09:15:36 by adede            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ static void	ft_parse_flag(t_options *options, const char flag)
 {
 	if (flag == '-')
 		options->flags.dash = true;
-    else if (flag == '0')
+	else if (flag == '0')
 		options->flags.zero = true;
-    else if (flag == '#')
+	else if (flag == '#')
 		options->flags.hash = true;
-    else if (flag == '+')
+	else if (flag == '+')
 		options->flags.plus = true;
-    else if (flag == ' ')
+	else if (flag == ' ')
 		options->flags.space = true;
 }
 
@@ -34,21 +34,21 @@ int	ft_parse(const char *format, t_options *options)
 	start = format;
 	format++;
 	while (ft_strchr(flags, *format))
-    	ft_parse_flag(options, *format++);
+		ft_parse_flag(options, *format++);
 	if (ft_isdigit(*format))
 	{
-    	options->width = ft_atoi(format);
-        while (ft_isdigit(*format))
-            format++;
+		options->width = ft_atoi(format);
+		while (ft_isdigit(*format))
+			format++;
 	}
 	if (*format == '.')
 	{
 		format++;
 		options->precision = ft_atoi(format);
-        while (ft_isdigit(*format))
-            format++;
+		while (ft_isdigit(*format))
+			format++;
 	}
-    options->specifier = *format;
-    format++;
+	options->specifier = *format;
+	format++;
 	return (format - start);
 }
