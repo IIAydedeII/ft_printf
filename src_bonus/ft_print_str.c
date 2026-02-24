@@ -6,17 +6,27 @@
 /*   By: adede <adede@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 12:42:29 by adede             #+#    #+#             */
-/*   Updated: 2026/02/23 22:37:21 by adede            ###   ########.fr       */
+/*   Updated: 2026/02/24 11:03:21 by adede            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
+static int	ft_str_len(char *s, t_options *options)
+{
+	int	length;
+
+	length = ft_strlen(s);
+	if (options->flags.dot && options->precision < length)
+		length = options->precision;
+	return (length);
+}
+
 int	ft_putstr(char *s, t_options *options)
 {
 	int	written;
 
-	written = (int)write(1, s, ft_strlen(s));
+	written = (int)write(1, s, ft_str_len(s, options));
 	if (written < 0)
 		options->error = true;
 	return (written);
@@ -30,7 +40,7 @@ int	ft_print_str(char *s, t_options *options)
 	if (!s)
 		return (ft_putstr("(null)", options));
 	padding = 0;
-	length = ft_strlen(s);
+	length = ft_str_len(s, options);
 	if (!options->flags.dash)
 		padding = ft_padding(length, options);
 	ft_putstr(s, options);
