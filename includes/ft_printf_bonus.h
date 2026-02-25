@@ -6,7 +6,7 @@
 /*   By: adede <adede@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 13:34:11 by adede             #+#    #+#             */
-/*   Updated: 2026/02/23 22:55:39 by adede            ###   ########.fr       */
+/*   Updated: 2026/02/25 10:07:36 by adede            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,5 @@ int	ft_padding(int padding, t_options *options);
 // Libft stand-in's
 int	ft_putchar(char c, t_options *options);
 int	ft_putstr(char *s, t_options *options);
-int	ft_puthex(uintptr_t number, t_options *options);
 
 #endif
