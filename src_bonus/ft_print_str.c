@@ -6,7 +6,7 @@
 /*   By: adede <adede@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 12:42:29 by adede             #+#    #+#             */
-/*   Updated: 2026/02/24 11:03:21 by adede            ###   ########.fr       */
+/*   Updated: 2026/02/25 09:54:14 by adede            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ static int	ft_str_len(char *s, t_options *options)
 	int	length;
 
 	length = ft_strlen(s);
-	if (options->flags.dot && options->precision < length)
+	if (options->flags.dot && \
+		options->precision < length && \
+		options->specifier == 's')
 		length = options->precision;
 	return (length);
 }
