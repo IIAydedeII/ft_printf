@@ -50,18 +50,21 @@ static int	ft_putnbr(int n, t_options *options)
 int	ft_print_int(int i, t_options *options)
 {
 	int		length;
+	int		precision;
 	int		padding;
 	bool	hidden_zero;
 
 	padding = 0;
 	length = ft_int_len(i);
-	hidden_zero = (options->flags.dot && i == 0);
+	precision = ft_precision(length, options);
+	hidden_zero = (options->flags.dot && options->precision == 0 && i == 0);
 	length -= hidden_zero;
 	if (!options->flags.dash)
-		padding = ft_padding(length, options);
+		padding = ft_padding(length + precision + sign, options);
+	ft_precision_print(precision, options);
 	if (!hidden_zero)
 		ft_putnbr(i, options);
 	if (options->flags.dash)
-		padding = ft_padding(length, options);
-	return (length + padding);
+		padding = ft_padding(length + precision, options);
+	return (length + precision + padding);
 }
