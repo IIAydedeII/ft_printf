@@ -20,7 +20,6 @@ SRC_BONUS	=	src_bonus/ft_padding.c \
 				src_bonus/ft_print_char.c \
 				src_bonus/ft_print_hex.c \
 				src_bonus/ft_print_int.c \
-				src_bonus/ft_print_ptr.c \
 				src_bonus/ft_print_str.c \
 				src_bonus/ft_print_uint.c \
 				src_bonus/ft_printf.c \
