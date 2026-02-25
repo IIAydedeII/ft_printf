@@ -6,7 +6,7 @@
 /*   By: adede <adede@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 00:56:00 by adede             #+#    #+#             */
-/*   Updated: 2026/02/23 22:55:42 by adede            ###   ########.fr       */
+/*   Updated: 2026/02/25 15:05:42 by adede            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,11 @@
 static void	ft_parse_flag(t_options *options, const char flag)
 {
 	if (flag == '-')
+	{
 		options->flags.dash = true;
-	else if (flag == '0')
+		options->flags.zero = false;
+	}
+	else if (flag == '0' && !options->flags.dash)
 		options->flags.zero = true;
 	else if (flag == '#')
 		options->flags.hash = true;
