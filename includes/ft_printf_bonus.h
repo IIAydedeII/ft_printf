@@ -6,7 +6,7 @@
 /*   By: adede <adede@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 13:34:11 by adede             #+#    #+#             */
-/*   Updated: 2026/02/27 09:30:45 by adede            ###   ########.fr       */
+/*   Updated: 2026/02/27 13:01:54 by adede            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int		ft_print_str(char *s, t_options *options);
 int		ft_print_int(int i, t_options *options);
 int		ft_print_uint(unsigned int i, t_options *options);
 int		ft_print_hex(uintptr_t x, t_options *options);
-int		ft_print_ptr(uintptr_t p, t_options *options);
 
 // Print utilities
 int		ft_padding(int length, t_options *options);
