@@ -6,7 +6,7 @@
 /*   By: adede <adede@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 00:56:00 by adede             #+#    #+#             */
-/*   Updated: 2026/02/25 15:05:42 by adede            ###   ########.fr       */
+/*   Updated: 2026/02/27 11:42:55 by adede            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	ft_parse(const char *format, t_options *options)
 	const char	flags[] = "-0#+ ";
 	const char	*start;
 
+	ft_bzero(options, sizeof(t_options));
 	start = format;
 	format++;
 	while (ft_strchr(flags, *format))
