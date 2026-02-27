@@ -6,7 +6,7 @@
 /*   By: adede <adede@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 17:17:56 by adede             #+#    #+#             */
-/*   Updated: 2026/02/27 09:07:44 by adede            ###   ########.fr       */
+/*   Updated: 2026/02/27 12:54:52 by adede            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,22 +57,21 @@ int	ft_print_int(int i, t_options *options)
 	int		precision;
 	bool	sign;
 	int		padding;
-	bool	hidden_zero;
 
 	length = ft_int_len(i);
+	if (options->flags.dot && i == 0)
+		length = 0;
 	precision = ft_precision(length, options);
 	sign = (i < 0 || options->flags.plus || options->flags.space);
 	padding = ft_padding(length + precision + sign, options);
-	hidden_zero = (options->flags.dot && options->precision == 0 && i == 0);
-	length -= hidden_zero;
-	if (options->flags.zero)
+	if (options->flags.zero && !options->flags.dot)
 		ft_sign(i, options);
 	if (!options->flags.dash)
 		ft_padding_print(padding, options);
-	if (!options->flags.zero)
+	if (!(options->flags.zero && !options->flags.dot))
 		ft_sign(i, options);
 	ft_precision_print(precision, options);
-	if (!hidden_zero)
+	if (length)
 		ft_putnbr(i, options);
 	if (options->flags.dash)
 		ft_padding_print(padding, options);

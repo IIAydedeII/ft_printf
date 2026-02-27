@@ -6,7 +6,7 @@
 /*   By: adede <adede@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 19:23:46 by adede             #+#    #+#             */
-/*   Updated: 2026/02/27 10:54:58 by adede            ###   ########.fr       */
+/*   Updated: 2026/02/27 12:55:08 by adede            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,21 +56,20 @@ int	ft_print_hex(uintptr_t x, t_options *options)
 	int		length;
 	int		precision;
 	int		padding;
-	bool	hidden_zero;
 	bool	prefixed;
 
 	if (options->specifier == 'p' && x == 0)
 		return (ft_print_str("(nil)", options));
 	prefixed = ((options->flags.hash && x != 0) || options->specifier == 'p');
 	length = ft_uintptr_len(x, prefixed);
+	if (options->flags.dot && x == 0)
+		length = 0;
 	precision = ft_precision(length, options);
 	padding = ft_padding(length + precision, options);
-	hidden_zero = (options->flags.dot && options->precision == 0 && x == 0);
-	length -= hidden_zero;
 	if (!options->flags.dash)
 		ft_padding_print(padding, options);
 	ft_precision_print(precision, options);
-	if (!hidden_zero)
+	if (length)
 		ft_puthex(x, options, prefixed);
 	if (options->flags.dash)
 		ft_padding_print(padding, options);

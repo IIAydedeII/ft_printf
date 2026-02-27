@@ -6,7 +6,7 @@
 /*   By: adede <adede@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 12:42:29 by adede             #+#    #+#             */
-/*   Updated: 2026/02/25 16:53:49 by adede            ###   ########.fr       */
+/*   Updated: 2026/02/27 12:49:53 by adede            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_padding_print(int padding, t_options *options)
 	numeric = ft_strchr("diuxX", options->specifier);
 	while (padding--)
 	{
-		if (options->flags.zero && numeric && options->precision == 0)
+		if (options->flags.zero && numeric && !options->flags.dot)
 			ft_putchar('0', options);
 		else
 			ft_putchar(' ', options);
