@@ -6,13 +6,13 @@
 /*   By: adede <adede@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 13:34:11 by adede             #+#    #+#             */
-/*   Updated: 2026/02/25 14:26:30 by adede            ###   ########.fr       */
+/*   Updated: 2026/02/27 09:30:45 by adede            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_BONUS_H
 # define FT_PRINTF_BONUS_H
-# include "../Libft/libft.h"
+# include "../libft/libft.h"
 # include <stdint.h> // to store pointer as an int (uintptr_t)
 # include <stdbool.h> // to store flags as a bool
 

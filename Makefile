@@ -1,6 +1,6 @@
 NAME		=	libftprintf.a
 
-LIBFT_DIR	=	Libft
+LIBFT_DIR	=	libft
 LIBFT		=	$(LIBFT_DIR)/libft.a
 
 INCLUDES	=	-I includes
