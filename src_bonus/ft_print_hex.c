@@ -6,7 +6,7 @@
 /*   By: adede <adede@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 19:23:46 by adede             #+#    #+#             */
-/*   Updated: 2026/02/27 09:11:00 by adede            ###   ########.fr       */
+/*   Updated: 2026/02/27 10:54:58 by adede            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	ft_print_hex(uintptr_t x, t_options *options)
 	bool	prefixed;
 
 	if (options->specifier == 'p' && x == 0)
-		return (ft_putstr("(nil)", options));
+		return (ft_print_str("(nil)", options));
 	prefixed = ((options->flags.hash && x != 0) || options->specifier == 'p');
 	length = ft_uintptr_len(x, prefixed);
 	precision = ft_precision(length, options);
